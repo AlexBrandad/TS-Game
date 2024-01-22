@@ -1,7 +1,7 @@
 <main class="main">
   <div class="feld-container" [ngStyle]="{ 'grid-template-columns': gridColumns, 'grid-template-rows': gridRows }">
     <div *ngFor="let field of fieldArray; let i = index" class="feld" [id]="field.x + '-' + field.y">
-      <!-- <app-pokemon [pkmn]="rayquaza" /> -->
+      <app-pokemon *ngIf="pkmnOnField(rayquaza.xyPosition, field)" [pkmn]="rayquaza" />
     </div>
   </div>
 </main>

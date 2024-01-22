@@ -1,3 +1,4 @@
+import { Xy } from '../app.component';
 import { PokemonType } from './pokemon-type';
 
 export class Pokemon {
@@ -9,6 +10,7 @@ export class Pokemon {
   private typen: PokemonType[];
   private attacken: any[];
   private schwaechen: any[];
+  private xy: Xy;
 
   constructor(id: number, name: string) {
     this._id = id;
@@ -19,6 +21,7 @@ export class Pokemon {
     this.typen = [];
     this.attacken = [];
     this.schwaechen = [];
+    this.xy = { x: 0, y: 0 };
   }
 
   get id(): number {
@@ -28,8 +31,31 @@ export class Pokemon {
   get name(): string {
     return this._name;
   }
+
+  get xyPosition(): Xy {
+    return this.xy;
+  }
+
+  bewegen(richtung: Richtung) {
+    switch (richtung) {
+      case 'oben':
+        this.xy.y--;
+        break;
+      case 'unten':
+        this.xy.y++;
+        break;
+      case 'links':
+        this.xy.x--;
+        break;
+      case 'rechts':
+        this.xy.x++;
+        break;
+    }
+  }
   //   Lebenspunkte abziehen
   // Erfahrungspunkte hinzufügen
   // Attacken beibringen
   // Das eine pkmn greift das andere an
 }
+
+export type Richtung = 'oben' | 'unten' | 'links' | 'rechts';

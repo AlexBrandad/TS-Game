@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Pokemon } from './models/pokemon';
 import { PokemonComponent } from './pokemon/pokemon.component';
@@ -15,11 +15,11 @@ export class AppComponent {
   rayquaza = new Pokemon(384, 'Rayquaza');
 
   feld = {
-    x: 4,
-    y: 3,
+    x: 40,
+    y: 30,
   };
 
-  fieldArray: Feld[] = [];
+  fieldArray: Xy[] = [];
 
   constructor() {
     for (let i = 0; i < this.feld.y; i++) {
@@ -32,13 +32,31 @@ export class AppComponent {
   gridColumns: string = `repeat(${this.feld.x}, 96px)`;
   gridRows: string = `repeat(${this.feld.y}, 96px)`;
 
-  // pokemon coord x y
-  // feld hat ne achse x y
+  pkmnOnField(positionOfPokemon: Xy, currentField: Xy): boolean {
+    if (positionOfPokemon.x === currentField.x && positionOfPokemon.y === currentField.y) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
-  // wenn pkmn x=2 y=3
+  @HostListener('document:keypress', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === 'w') {
+      this.rayquaza.bewegen('oben');
+    } else if (event.key === 's') {
+      this.rayquaza.bewegen('unten');
+    } else if (event.key === 'a') {
+      this.rayquaza.bewegen('links');
+    } else if (event.key === 'd') {
+      this.rayquaza.bewegen('rechts');
+    } else {
+      console.log('Key pressed: ' + event.key);
+    }
+  }
 }
 
-type Feld = {
+export type Xy = {
   x: number;
   y: number;
 };
