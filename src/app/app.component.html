@@ -1,5 +1,9 @@
 <main class="main">
-  <app-pokemon [pkmn]="rayquaza" />
+  <div class="feld-container" [ngStyle]="{ 'grid-template-columns': gridColumns, 'grid-template-rows': gridRows }">
+    <div *ngFor="let item of [].constructor(feld.x * feld.y); let i = index" class="feld">
+      <!-- <app-pokemon [pkmn]="rayquaza" /> -->
+    </div>
+  </div>
 </main>
 
 <router-outlet></router-outlet>

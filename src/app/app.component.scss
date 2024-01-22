@@ -1,0 +1,12 @@
+.feld {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  width: 96px;
+  height: 96px;
+}
+
+.feld-container {
+  display: grid;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
