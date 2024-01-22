@@ -15,9 +15,19 @@ export class AppComponent {
   rayquaza = new Pokemon(384, 'Rayquaza');
 
   feld = {
-    x: 40,
-    y: 30,
+    x: 4,
+    y: 3,
   };
+
+  fieldArray: Feld[] = [];
+
+  constructor() {
+    for (let i = 0; i < this.feld.y; i++) {
+      for (let j = 0; j < this.feld.x; j++) {
+        this.fieldArray.push({ x: j, y: i });
+      }
+    }
+  }
 
   gridColumns: string = `repeat(${this.feld.x}, 96px)`;
   gridRows: string = `repeat(${this.feld.y}, 96px)`;
@@ -27,3 +37,8 @@ export class AppComponent {
 
   // wenn pkmn x=2 y=3
 }
+
+type Feld = {
+  x: number;
+  y: number;
+};
