@@ -15,8 +15,8 @@ export class AppComponent {
   rayquaza = new Pokemon(384, 'Rayquaza');
 
   feld = {
-    x: 40,
-    y: 30,
+    x: 12,
+    y: 10,
   };
 
   fieldArray: Xy[] = [];

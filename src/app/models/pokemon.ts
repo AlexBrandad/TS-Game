@@ -2,11 +2,21 @@ import { Xy } from '../app.component';
 import { PokemonType } from './pokemon-type';
 
 export class Pokemon {
+  get lv(): number {
+    return this._lv;
+  }
+  get lp(): number {
+    return this._lp;
+  }
+
+  get xp(): number {
+    return this._xp;
+  }
   private _id: number;
   private _name: string;
-  private lv: number;
-  private lp: number;
-  private xp: number;
+  private _lv: number;
+  private _lp: number;
+  private _xp: number;
   private typen: PokemonType[];
   private attacken: any[];
   private schwaechen: any[];
@@ -15,9 +25,9 @@ export class Pokemon {
   constructor(id: number, name: string) {
     this._id = id;
     this._name = name;
-    this.lv = 1;
-    this.lp = 10;
-    this.xp = 0;
+    this._lv = 1;
+    this._lp = 10;
+    this._xp = 0;
     this.typen = [];
     this.attacken = [];
     this.schwaechen = [];
