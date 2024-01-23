@@ -15,8 +15,8 @@ export class AppComponent {
   rayquaza = new Pokemon(384, 'Rayquaza');
 
   feld = {
-    x: 12,
-    y: 10,
+    x: 4,
+    y: 3,
   };
 
   fieldArray: Xy[] = [];
@@ -40,15 +40,17 @@ export class AppComponent {
     }
   }
 
+
   @HostListener('document:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-    if (event.key === 'w') {
+    console.log(this.rayquaza.xyPosition);
+    if (event.key === 'w' && this.rayquaza.xyPosition.y > 0) {
       this.rayquaza.bewegen('oben');
-    } else if (event.key === 's') {
+    } else if (event.key === 's' && this.rayquaza.xyPosition.y < this.feld.y - 1) {
       this.rayquaza.bewegen('unten');
-    } else if (event.key === 'a') {
+    } else if (event.key === 'a' && this.rayquaza.xyPosition.x > 0) {
       this.rayquaza.bewegen('links');
-    } else if (event.key === 'd') {
+    } else if (event.key === 'd' && this.rayquaza.xyPosition.x < this.feld.x - 1) {
       this.rayquaza.bewegen('rechts');
     } else {
       console.log('Key pressed: ' + event.key);
