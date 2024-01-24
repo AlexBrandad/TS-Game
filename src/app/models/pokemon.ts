@@ -110,9 +110,9 @@ export class Pokemon {
     }
 
 
-    gainXpAndLevelUp() {
+    gainXpAndLevelUp(points: number) {
         if (this._currentXp < this.xp) {
-            this._currentXp += 2;
+            this._currentXp += points;
             if (this._currentXp >= this.xp) {
                 this._currentLv += 1;
                 this._maxLp += 17;
@@ -123,13 +123,13 @@ export class Pokemon {
         }
     }
 
-    gainLp() {
+    gainLp(points: number) {
         if (this._currentLp < this.maxLp) {
-            this._currentLp += 1;
+            this._currentLp += points;
         }
     }
 
-    // Erfahrungspunkte hinzufügen
+
     // Attacken beibringen
     // Das eine pkmn greift das andere an
 }

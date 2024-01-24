@@ -1,8 +1,8 @@
 <main class="main">
     <div>
-        <button (click)="gainXP()">Klick Mich um zu XP zu erhalten!</button>
+        <button (click)="gainXP(2)">Klick Mich um zu XP zu erhalten!</button>
         <br/>
-        <button (click)="gainLP()">Klick Mich um zu heilen!</button>
+        <button (click)="gainLP(1)">Klick Mich um zu heilen!</button>
     </div>
     <div class="feld-container" [ngStyle]="{ 'grid-template-columns': gridColumns, 'grid-template-rows': gridRows }">
         <div *ngFor="let field of fieldArray; let i = index" class="feld" [id]="field.x + '-' + field.y">

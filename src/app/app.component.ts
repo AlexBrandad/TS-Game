@@ -18,7 +18,6 @@ import {FruitType} from "./models/fruit-type";
 export class AppComponent {
     rayquaza = new Pokemon(384, 'Rayquaza');
     healthBerry = new Fruit(FruitType.Health);
-    healthBerry2 = new Fruit(FruitType.Health);
 
     feld = {
         x: 4,
@@ -69,12 +68,12 @@ export class AppComponent {
         }
     }
 
-    gainXP() {
-        this.rayquaza.gainXpAndLevelUp();
+    gainXP(points: number) {
+        this.rayquaza.gainXpAndLevelUp(points);
     }
 
-    gainLP() {
-        this.rayquaza.gainLp();
+    gainLP(points: number) {
+        this.rayquaza.gainLp(points);
     }
 }
 
