@@ -3,7 +3,8 @@
         <button (click)="gainXP(20000)" class="bg-amber-300 rounded-xl p-2 m-4">Klick Mich um zu XP zu erhalten!
         </button>
         <br/>
-        <button (click)="gainLP(1)" class="bg-amber-300 rounded-xl p-2 m-4">Klick Mich um zu heilen!</button>
+        <button (click)="gainLP(3)" class="bg-amber-300 rounded-xl p-2 m-4">Klick Mich um zu heilen!</button>
+        <button (click)="removeLP(-4)" class="bg-amber-300 rounded-xl p-2 m-4">Füge Schaden Hinzu!</button>
     </div>
     <div class="feld-container" [ngStyle]="{ 'grid-template-columns': gridColumns, 'grid-template-rows': gridRows }">
         <div *ngFor="let field of fieldArray; let i = index" class="feld" [id]="field.x + '-' + field.y">

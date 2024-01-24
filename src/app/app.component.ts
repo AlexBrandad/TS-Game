@@ -75,6 +75,11 @@ export class AppComponent {
     gainLP(points: number) {
         this.rayquaza.gainLp(points);
     }
+
+    removeLP(points: number) {
+        this.gainLP(points);
+    }
+
 }
 
 export type Xy = {

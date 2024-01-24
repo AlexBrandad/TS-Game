@@ -133,11 +133,10 @@ export class Pokemon {
     }
 
     gainLp(points: number) {
-        if (this._currentLp < this.maxLp) {
+        if (this._currentLp <= this.maxLp) {
             this._currentLp += points;
         }
     }
-
 
     // Attacken beibringen
     // Das eine pkmn greift das andere an
