@@ -57,7 +57,11 @@ export class Pokemon {
     }
 
     set xp(value: number) {
-        this._xp = value;
+        if (this.currentLv >= this.maxLv) {
+            this._xp = 0;
+        } else {
+            this._xp = value;
+        }
     }
 
     set maxLp(value: number) {
@@ -85,7 +89,12 @@ export class Pokemon {
     }
 
     set currentXp(value: number) {
-        this._currentXp = value;
+        if (this._currentLv < this.maxLv) {
+            this._currentXp = value;
+        } else {
+            this._currentXp = 0;
+            this.xp = 0;
+        }
     }
 
     set maxLv(value: number) {
@@ -111,13 +120,13 @@ export class Pokemon {
 
 
     gainXpAndLevelUp(points: number) {
-        if (this._currentXp < this.xp) {
-            this._currentXp += points;
-            if (this._currentXp >= this.xp) {
-                this._currentLv += 1;
-                this._maxLp += 17;
-                this._currentLp = this._maxLp;
-                this._currentXp -= this.xp;
+        if (this.currentXp < this.xp) {
+            this.currentXp += points;
+            while (this.currentXp >= this.xp && this.currentLv < this.maxLv) {
+                this.currentLv += 1;
+                this.maxLp += 17;
+                this.currentLp = this.maxLp;
+                this.currentXp -= this.xp;
                 this.xp += 15;
             }
         }
