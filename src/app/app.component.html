@@ -2,6 +2,7 @@
   <div class="feld-container" [ngStyle]="{ 'grid-template-columns': gridColumns, 'grid-template-rows': gridRows }">
     <div *ngFor="let field of fieldArray; let i = index" class="feld" [id]="field.x + '-' + field.y">
       <app-pokemon *ngIf="pkmnOnField(rayquaza.xyPosition, field)" [pkmn]="rayquaza" />
+        <app-fruit *ngIf="objectOnField(healthBerry.xyPosition, field)" [fruit]="healthBerry"/>
     </div>
   </div>
 </main>

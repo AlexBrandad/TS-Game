@@ -1,18 +1,23 @@
-import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { Pokemon } from './models/pokemon';
-import { PokemonComponent } from './pokemon/pokemon.component';
+import {CommonModule} from '@angular/common';
+import {ChangeDetectionStrategy, Component, HostListener} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
+import {Pokemon} from './models/pokemon';
+import {PokemonComponent} from './pokemon/pokemon.component';
+import {FruitComponent} from "./fruit/fruit.component";
+import {Fruit} from "./models/fruit";
+import {FruitType} from "./models/fruit-type";
 
 @Component({
   selector: 'app-root',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  imports: [CommonModule, RouterOutlet, PokemonComponent],
+  imports: [CommonModule, RouterOutlet, PokemonComponent, FruitComponent],
 })
 export class AppComponent {
   rayquaza = new Pokemon(384, 'Rayquaza');
+  healthBerry = new Fruit(FruitType.Health);
 
   feld = {
     x: 4,
@@ -33,17 +38,15 @@ export class AppComponent {
   gridRows: string = `repeat(${this.feld.y}, 96px)`;
 
   pkmnOnField(positionOfPokemon: Xy, currentField: Xy): boolean {
-    if (positionOfPokemon.x === currentField.x && positionOfPokemon.y === currentField.y) {
-      return true;
-    } else {
-      return false;
-    }
+    return positionOfPokemon.x === currentField.x && positionOfPokemon.y === currentField.y;
+  }
+  objectOnField(positionOfObject: Xy, currentField: Xy): boolean {
+    return positionOfObject.x === currentField.x && positionOfObject.y === currentField.y;
   }
 
 
   @HostListener('document:keypress', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-    console.log(this.rayquaza.xyPosition);
     if (event.key === 'w' && this.rayquaza.xyPosition.y > 0) {
       this.rayquaza.bewegen('oben');
     } else if (event.key === 's' && this.rayquaza.xyPosition.y < this.feld.y - 1) {
@@ -53,7 +56,6 @@ export class AppComponent {
     } else if (event.key === 'd' && this.rayquaza.xyPosition.x < this.feld.x - 1) {
       this.rayquaza.bewegen('rechts');
     } else {
-      console.log('Key pressed: ' + event.key);
     }
   }
 }

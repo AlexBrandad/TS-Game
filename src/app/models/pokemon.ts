@@ -2,16 +2,7 @@ import { Xy } from '../app.component';
 import { PokemonType } from './pokemon-type';
 
 export class Pokemon {
-  get lv(): number {
-    return this._lv;
-  }
-  get lp(): number {
-    return this._lp;
-  }
 
-  get xp(): number {
-    return this._xp;
-  }
   private _id: number;
   private _name: string;
   private _lv: number;
@@ -34,6 +25,16 @@ export class Pokemon {
     this.xy = { x: 0, y: 0 };
   }
 
+  get lv(): number {
+    return this._lv;
+  }
+  get lp(): number {
+    return this._lp;
+  }
+
+  get xp(): number {
+    return this._xp;
+  }
   get id(): number {
     return this._id;
   }
