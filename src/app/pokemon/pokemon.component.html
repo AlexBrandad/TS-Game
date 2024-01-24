@@ -5,11 +5,11 @@
             <p class="whitespace-nowrap">
                 Pokédex Nr: {{ pkmn.id }}
                 <br/>
-                Lebenspunkte: {{ pkmn.lp }}
+                Lebenspunkte: {{ pkmn._currentLp }} | {{ pkmn.maxLp }}
                 <br/>
-                aktuelles Level: {{ pkmn.lv }}
+                aktuelles Level: {{ pkmn._currentLv }} | {{ pkmn.maxLv }}
                 <br/>
-                Erfahrungspunkte: {{ pkmn.xp }}
+                Erfahrungspunkte: {{ pkmn._currentXp }} | {{ pkmn.xp }}
                 <br/>
             </p>
         </div>

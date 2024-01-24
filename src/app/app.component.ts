@@ -8,59 +8,79 @@ import {Fruit} from "./models/fruit";
 import {FruitType} from "./models/fruit-type";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
-  imports: [CommonModule, RouterOutlet, PokemonComponent, FruitComponent],
+    selector: 'app-root',
+    standalone: true,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss',
+    imports: [CommonModule, RouterOutlet, PokemonComponent, FruitComponent],
 })
 export class AppComponent {
-  rayquaza = new Pokemon(384, 'Rayquaza');
-  healthBerry = new Fruit(FruitType.Health);
+    rayquaza = new Pokemon(384, 'Rayquaza');
+    healthBerry = new Fruit(FruitType.Health);
+    healthBerry2 = new Fruit(FruitType.Health);
 
-  feld = {
-    x: 4,
-    y: 3,
-  };
+    feld = {
+        x: 4,
+        y: 3,
+    };
 
-  fieldArray: Xy[] = [];
+    fieldArray: Xy[] = [];
 
-  constructor() {
-    for (let i = 0; i < this.feld.y; i++) {
-      for (let j = 0; j < this.feld.x; j++) {
-        this.fieldArray.push({ x: j, y: i });
-      }
+    constructor() {
+        for (let i = 0; i < this.feld.y; i++) {
+            for (let j = 0; j < this.feld.x; j++) {
+                this.fieldArray.push({x: j, y: i});
+            }
+        }
     }
-  }
 
-  gridColumns: string = `repeat(${this.feld.x}, 96px)`;
-  gridRows: string = `repeat(${this.feld.y}, 96px)`;
+    gridColumns: string = `repeat(${this.feld.x}, 96px)`;
+    gridRows: string = `repeat(${this.feld.y}, 96px)`;
 
-  pkmnOnField(positionOfPokemon: Xy, currentField: Xy): boolean {
-    return positionOfPokemon.x === currentField.x && positionOfPokemon.y === currentField.y;
-  }
-  objectOnField(positionOfObject: Xy, currentField: Xy): boolean {
-    return positionOfObject.x === currentField.x && positionOfObject.y === currentField.y;
-  }
-
-
-  @HostListener('document:keypress', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent) {
-    if (event.key === 'w' && this.rayquaza.xyPosition.y > 0) {
-      this.rayquaza.bewegen('oben');
-    } else if (event.key === 's' && this.rayquaza.xyPosition.y < this.feld.y - 1) {
-      this.rayquaza.bewegen('unten');
-    } else if (event.key === 'a' && this.rayquaza.xyPosition.x > 0) {
-      this.rayquaza.bewegen('links');
-    } else if (event.key === 'd' && this.rayquaza.xyPosition.x < this.feld.x - 1) {
-      this.rayquaza.bewegen('rechts');
-    } else {
+    pkmnOnField(positionOfPokemon: Xy, currentField: Xy): boolean {
+        return positionOfPokemon.x === currentField.x && positionOfPokemon.y === currentField.y;
     }
-  }
+
+    objectOnField(positionOfObject: Xy, currentField: Xy): boolean {
+        return positionOfObject.x === currentField.x && positionOfObject.y === currentField.y;
+    }
+
+    objectCollision(positionOfObject: Xy, positionOfPokemon: Xy): boolean {
+        if (positionOfPokemon.x == positionOfObject.x && positionOfPokemon.y == positionOfObject.y) {
+            this.healthBerry.xy = {x: -1, y: -1};
+            return true;
+        } else return false;
+
+    }
+
+
+    @HostListener('document:keypress', ['$event'])
+    handleKeyboardEvent(event: KeyboardEvent) {
+        if (event.key === 'w' && this.rayquaza.xyPosition.y > 0) {
+            this.rayquaza.bewegen('oben');
+        } else if (event.key === 's' && this.rayquaza.xyPosition.y < this.feld.y - 1) {
+            this.rayquaza.bewegen('unten');
+        } else if (event.key === 'a' && this.rayquaza.xyPosition.x > 0) {
+            this.rayquaza.bewegen('links');
+        } else if (event.key === 'd' && this.rayquaza.xyPosition.x < this.feld.x - 1) {
+            this.rayquaza.bewegen('rechts');
+        } else {
+        }
+    }
+
+    gainXP() {
+        this.rayquaza.gainXpAndLevelUp();
+    }
+
+    gainLP() {
+        if (this.rayquaza._currentLp <= this.rayquaza.maxLp) {
+            this.rayquaza._currentLp += 1;
+        }
+    }
 }
 
 export type Xy = {
-  x: number;
-  y: number;
+    x: number;
+    y: number;
 };
