@@ -113,13 +113,19 @@ export class Pokemon {
     gainXpAndLevelUp() {
         if (this._currentXp < this.xp) {
             this._currentXp += 2;
-            if (this._currentXp === this.xp) {
+            if (this._currentXp >= this.xp) {
                 this._currentLv += 1;
                 this._maxLp += 17;
                 this._currentLp = this._maxLp;
-                this._currentXp = 0;
+                this._currentXp -= this.xp;
                 this.xp += 15;
             }
+        }
+    }
+
+    gainLp() {
+        if (this._currentLp < this.maxLp) {
+            this._currentLp += 1;
         }
     }
 

@@ -74,9 +74,7 @@ export class AppComponent {
     }
 
     gainLP() {
-        if (this.rayquaza._currentLp <= this.rayquaza.maxLp) {
-            this.rayquaza._currentLp += 1;
-        }
+        this.rayquaza.gainLp();
     }
 }
 
