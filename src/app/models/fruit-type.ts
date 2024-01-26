@@ -1,4 +1,4 @@
 export enum FruitType {
-    'Health',
-    'StatusCleanse',
+  'Health',
+  'StatusCleanse',
 }

@@ -8,10 +8,9 @@ describe('FruitComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FruitComponent]
-    })
-    .compileComponents();
-    
+      imports: [FruitComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(FruitComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
