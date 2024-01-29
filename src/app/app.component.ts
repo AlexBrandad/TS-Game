@@ -94,7 +94,7 @@ export class AppComponent {
   }
 
   removeLP(points: number) {
-    this.gainLP(points);
+    this.rayquaza.removeLp(points);
   }
 }
 

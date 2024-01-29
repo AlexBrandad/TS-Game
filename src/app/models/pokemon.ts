@@ -133,8 +133,19 @@ export class Pokemon {
   }
 
   gainLp(points: number) {
-    if (this._currentLp <= this.maxLp) {
+    const lifeValue = this._currentLp + points;
+    if (this._currentLp < this.maxLp && lifeValue <= this.maxLp) {
       this._currentLp += points;
+    } else if (lifeValue > this.maxLp) {
+      this._currentLp = this.maxLp;
+    }
+  }
+
+  removeLp(points: number) {
+    if (this._currentLp <= this.maxLp && this._currentLp > points) {
+      this._currentLp -= points;
+    } else {
+      this._currentLp = 0;
     }
   }
 
