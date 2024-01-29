@@ -1,4 +1,5 @@
 import { Xy } from '../app.component';
+import { PokemonAttacke } from './pokemon-attacken';
 import { PokemonStatus } from './pokemon-status';
 import { PokemonType } from './pokemon-type';
 
@@ -11,25 +12,33 @@ export class Pokemon {
   private _maxLv: number;
   public _maxLp: number;
   private _xp: number;
-  private typen: PokemonType[];
-  private attacken: any[];
-  private schwaechen: any[];
+  public _typen: PokemonType[];
+
+  private attacken: PokemonAttacke[];
+  public _schwaechen: PokemonType[];
+
   private xy: Xy;
   private status: PokemonStatus;
 
-  constructor(id: number, name: string) {
+  constructor(
+    id: number,
+    name: string,
+    _typen: PokemonType[],
+    _schwaeche: PokemonType[]
+  ) {
     this._id = id;
     this._name = name;
     this._maxLv = 100;
     this._maxLp = 10;
     this._xp = 10;
-    this.typen = [];
+    this.typen = _typen;
     this.attacken = [];
-    this.schwaechen = [];
+    this._schwaechen = _schwaeche;
     this.xy = { x: 0, y: 0 };
     this._currentLp = this._maxLp;
     this._currentLv = 1;
     this._currentXp = 0;
+    this._typen = [];
     this.status = PokemonStatus.normal;
   }
 
@@ -64,7 +73,12 @@ export class Pokemon {
       this._xp = value;
     }
   }
-
+  public get schwaechen(): PokemonType[] {
+    return this._schwaechen;
+  }
+  public set schwaechen(value: PokemonType[]) {
+    this._schwaechen = value;
+  }
   set maxLp(value: number) {
     this._maxLp = value;
   }
@@ -76,7 +90,12 @@ export class Pokemon {
   set currentLv(value: number) {
     this._currentLv = value;
   }
-
+  public get typen(): PokemonType[] {
+    return this._typen;
+  }
+  public set typen(value: PokemonType[]) {
+    this._typen = value;
+  }
   get currentLp(): number {
     return this._currentLp;
   }

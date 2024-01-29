@@ -11,6 +11,7 @@ import { FruitComponent } from './fruit/fruit.component';
 import { Fruit } from './models/fruit';
 import { FruitType } from './models/fruit-type';
 import { Eisstrahl, PokemonAttacke } from './models/pokemon-attacken';
+import { PokemonType } from './models/pokemon-type';
 
 @Component({
   selector: 'app-root',
@@ -21,8 +22,18 @@ import { Eisstrahl, PokemonAttacke } from './models/pokemon-attacken';
   imports: [CommonModule, RouterOutlet, PokemonComponent, FruitComponent],
 })
 export class AppComponent {
-  rayquaza = new Pokemon(384, 'Rayquaza');
-  dragoran = new Pokemon(148, 'Dragoran');
+  rayquaza = new Pokemon(
+    384,
+    'Rayquaza',
+    [PokemonType.DRAGON, PokemonType.FLYING],
+    [PokemonType.ICE, PokemonType.DRAGON]
+  );
+  dragoran = new Pokemon(
+    148,
+    'Dragoran',
+    [PokemonType.DRAGON, PokemonType.FLYING],
+    [PokemonType.ICE, PokemonType.DRAGON]
+  );
   healthBerry = new Fruit(FruitType.Health);
 
   feld = {
@@ -103,7 +114,14 @@ export class AppComponent {
     console.log(defender);
     console.log(attacke);
     console.log(attacke.name);
+    console.log(defender._schwaechen.includes(attacke.typ));
+    if (defender._schwaechen.includes(attacke.typ)) {
+      defender.removeLp(attacke.value * 2);
+    } else defender.removeLp(attacke.value);
   }
+  // Ich iteriere die schwächen, pro iteration wird die fnkt getMultiplikator aufgerufen
+  // pro iteration wird der multiplikator (return value der funktion addiert)
+  // und am ende hat man dann attack.value * Multiplikator
   eisStrahl() {
     this.angreifen(this.dragoran, this.rayquaza, Eisstrahl);
   }
