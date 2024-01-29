@@ -1,14 +1,17 @@
 <main class="main">
   <div>
-    <button (click)="gainXP(20000)" class="bg-amber-300 rounded-xl p-2 m-4">
-      Klick Mich um zu XP zu erhalten!
+    <button (click)="gainXP(25)" class="bg-amber-300 rounded-xl p-2 m-4">
+      Gib mir XP du Bengel!
     </button>
     <br />
     <button (click)="gainLP(3)" class="bg-amber-300 rounded-xl p-2 m-4">
-      Klick Mich um zu heilen!
+      Heal me Daddy!
     </button>
     <button (click)="removeLP(4)" class="bg-amber-300 rounded-xl p-2 m-4">
-      Füge Schaden Hinzu!
+      Aua Aua UwU!
+    </button>
+    <button (click)="eisStrahl()" class="bg-amber-300 rounded-xl p-2 m-4">
+      Eisstrahl!
     </button>
   </div>
   <div
@@ -26,6 +29,10 @@
       <app-pokemon
         *ngIf="pkmnOnField(rayquaza.xyPosition, field)"
         [pkmn]="rayquaza"
+      />
+      <app-pokemon
+        *ngIf="pkmnOnField(dragoran.xyPosition, field)"
+        [pkmn]="dragoran"
       />
       <!--
                     <app-fruit *ngIf="objectCollision(healthBerry.xyPosition, this.rayquaza.xyPosition)"  [fruit]="healthBerry"/>

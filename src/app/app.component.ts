@@ -10,6 +10,7 @@ import { PokemonComponent } from './pokemon/pokemon.component';
 import { FruitComponent } from './fruit/fruit.component';
 import { Fruit } from './models/fruit';
 import { FruitType } from './models/fruit-type';
+import { Eisstrahl, PokemonAttacke } from './models/pokemon-attacken';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,7 @@ import { FruitType } from './models/fruit-type';
 })
 export class AppComponent {
   rayquaza = new Pokemon(384, 'Rayquaza');
+  dragoran = new Pokemon(148, 'Dragoran');
   healthBerry = new Fruit(FruitType.Health);
 
   feld = {
@@ -95,6 +97,15 @@ export class AppComponent {
 
   removeLP(points: number) {
     this.rayquaza.removeLp(points);
+  }
+  angreifen(attacker: Pokemon, defender: Pokemon, attacke: PokemonAttacke) {
+    console.log(attacker);
+    console.log(defender);
+    console.log(attacke);
+    console.log(attacke.name);
+  }
+  eisStrahl() {
+    this.angreifen(this.dragoran, this.rayquaza, Eisstrahl);
   }
 }
 
