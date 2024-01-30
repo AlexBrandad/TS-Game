@@ -115,6 +115,7 @@ export class AppComponent {
     console.log(attacke);
     console.log(attacke.name);
     console.log(defender._schwaechen.includes(attacke.typ));
+    console.log(this.dragoran._schwaechen);
     if (defender._schwaechen.includes(attacke.typ)) {
       defender.removeLp(attacke.value * 2);
     } else defender.removeLp(attacke.value);

@@ -1,4 +1,3 @@
-import { Pokemon } from './pokemon';
 import { PokemonType } from './pokemon-type';
 type Multiplikator = 0 | 1 | 0.5 | 2;
 
