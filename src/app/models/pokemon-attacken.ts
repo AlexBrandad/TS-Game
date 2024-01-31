@@ -10,4 +10,3 @@ export const Eisstrahl: PokemonAttacke = {
   typ: PokemonType.ICE,
   value: 70,
 };
-//** Wir wollen Attackname, AttackTyp, AttackValue, AttackMultiplier */

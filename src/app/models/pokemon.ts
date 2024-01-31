@@ -31,14 +31,13 @@ export class Pokemon {
     this._maxLv = 100;
     this._maxLp = 10;
     this._xp = 10;
-    this.typen = _typen;
     this.attacken = [];
     this._schwaechen = _schwaeche;
     this.xy = { x: 0, y: 0 };
     this._currentLp = this._maxLp;
     this._currentLv = 1;
     this._currentXp = 0;
-    this._typen = [];
+    this._typen = _typen;
     this.status = PokemonStatus.normal;
   }
 
