@@ -10,7 +10,7 @@ import { PokemonComponent } from './pokemon/pokemon.component';
 import { FruitComponent } from './fruit/fruit.component';
 import { Fruit } from './models/fruit';
 import { FruitType } from './models/fruit-type';
-import { Eisstrahl, PokemonAttacke } from './models/pokemon-attacken';
+import { Eisstrahl, Erholung, PokemonAttacke } from './models/pokemon-attacken';
 import { PokemonType } from './models/pokemon-type';
 import { getMultiplikator } from './models/type-multiplikator';
 
@@ -110,20 +110,27 @@ export class AppComponent {
   removeLP(points: number) {
     this.rayquaza.removeLp(points);
   }
-  angreifen(attacker: Pokemon, defender: Pokemon, attacke: PokemonAttacke) {
+  angreifen(
+    attacker: Pokemon,
+    defender: Pokemon,
+    attacke: PokemonAttacke
+  ): void {
     let multiplikatorSumme = 1;
     for (const defendTyp of defender._typen) {
       const multiplikator = getMultiplikator(attacke.typ, defendTyp);
       multiplikatorSumme *= multiplikator;
     }
     const attackValue = attacke.value * multiplikatorSumme;
-    return attackValue;
+    defender.removeLp(attackValue);
+    if (attacke.specialEffect) {
+      attacke.specialEffect();
+    }
   }
-  // Ich iteriere die schwächen, pro iteration wird die fnkt getMultiplikator aufgerufen
-  // pro iteration wird der multiplikator (return value der funktion addiert)
-  // und am ende hat man dann attack.value * Multiplikator
-  eisStrahl(): number {
-    return this.angreifen(this.dragoran, this.rayquaza, Eisstrahl);
+  eisStrahl(): void {
+    this.angreifen(this.dragoran, this.rayquaza, Eisstrahl);
+  }
+  erholung(): void {
+    this.angreifen(this.rayquaza, this.dragoran, Erholung);
   }
 }
 
