@@ -18,7 +18,7 @@ export class Pokemon {
   public _schwaechen: PokemonType[];
 
   private xy: Xy;
-  private status: PokemonStatus;
+  public _status: PokemonStatus;
 
   constructor(
     id: number,
@@ -38,7 +38,7 @@ export class Pokemon {
     this._currentLv = 1;
     this._currentXp = 0;
     this._typen = _typen;
-    this.status = PokemonStatus.normal;
+    this._status = PokemonStatus.NORMAL;
   }
 
   get maxLv(): number {
@@ -81,7 +81,12 @@ export class Pokemon {
   set maxLp(value: number) {
     this._maxLp = value;
   }
-
+  public get status(): PokemonStatus {
+    return this._status;
+  }
+  public set status(value: PokemonStatus) {
+    this._status = value;
+  }
   get currentLv(): number {
     return this._currentLv;
   }

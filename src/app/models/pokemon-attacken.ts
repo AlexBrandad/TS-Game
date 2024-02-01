@@ -9,10 +9,9 @@ export type PokemonAttacke = {
   specialEffect?: () => void;
 };
 const erholungEffektFunktion = function erholungEffekt() {
-  //pkmn heilt sich + schläft ein
+  // pkmn heilt sich + schläft ein
   // woher bekomm ich die information welches pokemon sich heilt
   // funktion hat immer EINGABE AUSGABE!!
-  //
 };
 export const Eisstrahl: PokemonAttacke = {
   name: 'Eisstrahl',

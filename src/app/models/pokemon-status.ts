@@ -1,9 +1,9 @@
 export enum PokemonStatus {
-  'sleeping',
-  'frozen',
-  'burning',
-  'poisoned',
-  'paralyzed',
-  'confused',
-  'normal',
+  SLEEPING = 'sleeping',
+  FROZEN = 'frozen',
+  BURNING = 'burning',
+  POISONED = 'poisoned',
+  PARALYZED = 'paralyzed',
+  CONFUSED = 'confused',
+  NORMAL = 'normal',
 }

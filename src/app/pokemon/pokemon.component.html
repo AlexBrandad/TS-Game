@@ -18,6 +18,8 @@
         aktuelles Level: {{ pkmn._currentLv }} | {{ pkmn.maxLv }}
         <br />
         Erfahrungspunkte: {{ pkmn._currentXp }} | {{ pkmn.xp }}
+
+        @if (pkmn._status != 'normal') {<br />Status: {{ pkmn._status }}}
         <br />
       </p>
     </div>
