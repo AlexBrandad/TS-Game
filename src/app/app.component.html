@@ -14,7 +14,7 @@
     <div class="button-wrapper">
         <h1 class="title">Dragoran</h1>
         <div class="button-container">
-            <button (click)="eisStrahl()" class="button-style button-item">
+            <button [style.background-color]="color.ice" (click)="eisStrahl()" class="button-style button-item">
                 Eisstrahl!
             </button>
             <button class="button-style button-item">
@@ -33,7 +33,7 @@
     <div class="button-wrapper">
         <h1 class="title">Rayquaza</h1>
         <div class="button-container">
-            <button (click)="erholung()" class="button-style button-item">
+            <button [style.background-color]="color.normal" (click)="erholung()" class="button-style button-item">
                 Erholung!
             </button>
             <button class="button-style button-item">

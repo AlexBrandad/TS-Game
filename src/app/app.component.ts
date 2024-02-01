@@ -7,7 +7,7 @@ import {FruitComponent} from './fruit/fruit.component';
 import {Fruit} from './models/fruit';
 import {FruitType} from './models/fruit-type';
 import {Eisstrahl, Erholung, PokemonAttacke} from './models/pokemon-attacken';
-import {PokemonType} from './models/pokemon-type';
+import {PokemonType, PokemonTypeColors} from './models/pokemon-type';
 import {getMultiplikator} from './models/type-multiplikator';
 
 @Component({
@@ -19,6 +19,7 @@ import {getMultiplikator} from './models/type-multiplikator';
     imports: [CommonModule, RouterOutlet, PokemonComponent, FruitComponent],
 })
 export class AppComponent {
+
     rayquaza = new Pokemon(
         384,
         'Rayquaza',
@@ -50,6 +51,7 @@ export class AppComponent {
 
     gridColumns: string = `repeat(${this.feld.x}, 96px)`;
     gridRows: string = `repeat(${this.feld.y}, 96px)`;
+    public color = PokemonTypeColors;
 
     pkmnOnField(positionOfPokemon: Xy, currentField: Xy): boolean {
         return (
