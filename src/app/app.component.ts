@@ -6,7 +6,7 @@ import {PokemonComponent} from './pokemon/pokemon.component';
 import {FruitComponent} from './fruit/fruit.component';
 import {Fruit} from './models/fruit';
 import {FruitType} from './models/fruit-type';
-import {Eisstrahl, Erholung, PokemonAttacke} from './models/pokemon-attacken';
+import {Bodycheck, Eisstrahl, Erholung, PokemonAttacke} from './models/pokemon-attacken';
 import {PokemonType, PokemonTypeColors} from './models/pokemon-type';
 import {getMultiplikator} from './models/type-multiplikator';
 
@@ -132,6 +132,10 @@ export class AppComponent {
 
     erholung(): void {
         this.angreifen(this.rayquaza, this.dragoran, Erholung);
+    }
+
+    bodycheck(): void {
+        this.angreifen(this.rayquaza, this.dragoran, Bodycheck);
     }
 }
 
