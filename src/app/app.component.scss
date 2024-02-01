@@ -11,3 +11,29 @@
   grid-row-gap: 0px;
 }
 
+.button-container {
+  display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.button-item {
+  width: 25%;
+  margin-bottom: 10px;
+}
+
+.button-style {
+  background-color: #FFD700; /* Amber-300 */
+  border-radius: 0.75rem; /* rounded-xl */
+  padding: 0.5rem 1rem; /* p-2 */
+  margin: 1rem 0.5rem; /* m-4 */
+}
+
+.button-wrapper {
+  width: 25%;
+}
+
+.title {
+  text-align: center;
+}

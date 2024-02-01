@@ -1,46 +1,80 @@
 <main class="main">
-  <div>
-    <button (click)="gainXP(20005)" class="bg-amber-300 rounded-xl p-2 m-4">
-      Gib mir XP du Bengel!
-    </button>
-    <br />
-    <button (click)="gainLP(3)" class="bg-amber-300 rounded-xl p-2 m-4">
-      Heal me Daddy!
-    </button>
-    <button (click)="removeLP(4)" class="bg-amber-300 rounded-xl p-2 m-4">
-      Aua Aua UwU!
-    </button>
-    <button (click)="eisStrahl()" class="bg-amber-300 rounded-xl p-2 m-4">
-      Eisstrahl!
-    </button>
-    <button (click)="erholung()" class="bg-amber-300 rounded-xl p-2 m-4">
-      Erholung!
-    </button>
-  </div>
-  <div
-    class="feld-container"
-    [ngStyle]="{
+    <div>
+        <button (click)="gainXP(20005)" class="button-style">
+            Gib mir XP du Bengel!
+        </button>
+        <br/>
+        <button (click)="gainLP(3)" class="button-style">
+            Heal me Daddy!
+        </button>
+        <button (click)="removeLP(4)" class="button-style">
+            Aua Aua UwU!
+        </button>
+    </div>
+    <div class="button-wrapper">
+        <h1 class="title">Dragoran</h1>
+        <div class="button-container">
+            <button (click)="eisStrahl()" class="button-style button-item">
+                Eisstrahl!
+            </button>
+            <button class="button-style button-item">
+                Attacke2!
+            </button>
+        </div>
+        <div class="button-container">
+            <button class="button-style button-item">
+                Attacke3!
+            </button>
+            <button class="button-style button-item">
+                Attacke4!
+            </button>
+        </div>
+    </div>
+    <div class="button-wrapper">
+        <h1 class="title">Rayquaza</h1>
+        <div class="button-container">
+            <button (click)="erholung()" class="button-style button-item">
+                Erholung!
+            </button>
+            <button class="button-style button-item">
+                Attacke 2!
+            </button>
+        </div>
+        <div class="button-container">
+            <button class="button-style button-item">
+                Attacke 3!
+            </button>
+            <button class="button-style button-item">
+                Attacke 4!
+            </button>
+        </div>
+    </div>
+
+
+    <div
+            class="feld-container"
+            [ngStyle]="{
       'grid-template-columns': gridColumns,
       'grid-template-rows': gridRows
     }"
-  >
-    <div
-      *ngFor="let field of fieldArray; let i = index"
-      class="feld"
-      [id]="field.x + '-' + field.y"
     >
-      <app-pokemon
-        *ngIf="pkmnOnField(rayquaza.xyPosition, field)"
-        [pkmn]="rayquaza"
-      />
-      <app-pokemon
-        *ngIf="pkmnOnField(dragoran.xyPosition, field)"
-        [pkmn]="dragoran"
-      />
-      <!--
-                    <app-fruit *ngIf="objectCollision(healthBerry.xyPosition, this.rayquaza.xyPosition)"  [fruit]="healthBerry"/>
-            -->
+        <div
+                *ngFor="let field of fieldArray; let i = index"
+                class="feld"
+                [id]="field.x + '-' + field.y"
+        >
+            <app-pokemon
+                    *ngIf="pkmnOnField(rayquaza.xyPosition, field)"
+                    [pkmn]="rayquaza"
+            />
+            <app-pokemon
+                    *ngIf="pkmnOnField(dragoran.xyPosition, field)"
+                    [pkmn]="dragoran"
+            />
+            <!--
+                          <app-fruit *ngIf="objectCollision(healthBerry.xyPosition, this.rayquaza.xyPosition)"  [fruit]="healthBerry"/>
+                  -->
+        </div>
     </div>
-  </div>
 </main>
 <router-outlet></router-outlet>
