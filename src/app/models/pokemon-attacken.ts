@@ -19,8 +19,11 @@ const erholungEffektFunktion = function erholungEffekt(attacker: Pokemon) {
 };
 
 const attackWithSelfDamage = function attackWithSelfDamageEffect(value: number) {
-    return (attacker: Pokemon) => {
+    return (attacker: Pokemon, defender?: Pokemon) => {
         attacker._currentLp -= Math.floor(0.25 * value);
+        if (defender) {
+            defender._currentLp -= value;
+        }
     };
 }
 
