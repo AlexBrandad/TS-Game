@@ -9,19 +9,14 @@ export type PokemonAttacke = {
     name: string;
     typ: PokemonType;
     value: number;
-    specialEffect?: (attacker: Pokemon) => void;
+    specialEffect?: (attacker: Pokemon, defender?: Pokemon, chanceToInflictStatus?: number) => void;
 };
 
-export function erzeugePokemonAttacke(name: string, typ: PokemonType, value: number, specialEffect?: (attacker: Pokemon) => void): PokemonAttacke {
-    return {name, typ, value, specialEffect};
+const chanceToInflictStatusEffectFunktion = function inflictStatusEffect(defender: Pokemon, chanceToInflictStatus: number) {
 }
-
 const erholungEffektFunktion = function erholungEffekt(attacker: Pokemon) {
     attacker._currentLp = attacker.maxLp;
     attacker._status = PokemonStatus.SLEEPING;
-    // pkmn heilt sich + schläft ein
-    // woher bekomm ich die information welches pokemon sich heilt
-    // funktion hat immer EINGABE AUSGABE!!
 };
 export const Eisstrahl: PokemonAttacke = {
     name: 'Eisstrahl',
@@ -29,4 +24,13 @@ export const Eisstrahl: PokemonAttacke = {
     value: 70,
 };
 
-export const Erholung: PokemonAttacke = erzeugePokemonAttacke("Erholung", PokemonType.PSYCHIC, 0, erholungEffektFunktion);
+export const Erholung: PokemonAttacke = {
+    name: "Erholung",
+    typ: PokemonType.PSYCHIC,
+    value: 0,
+    specialEffect: erholungEffektFunktion
+}
+
+//1. Attacken noch: Bodycheck(Rayquaza dmg + selfdmg) + Schutzschild (Dragoran)
+//2. Spieloberfläche muss die Attacken anzeigen können (muss aus Pokemon laden) wenn ich hilfe brauch gibts pseudocode
+
