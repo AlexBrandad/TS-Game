@@ -32,5 +32,6 @@ export const Erholung: PokemonAttacke = {
 }
 
 //1. Attacken noch: Bodycheck(Rayquaza dmg + selfdmg) + Schutzschild (Dragoran)
+// 1.1 ConsoleLogs die dem Spiel ähneln: "{{Attacker}}" führt {{Attacke}} aus! etc.
 //2. Spieloberfläche muss die Attacken anzeigen können (muss aus Pokemon laden) wenn ich hilfe brauch gibts pseudocode
 
