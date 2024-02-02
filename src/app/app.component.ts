@@ -6,9 +6,10 @@ import {PokemonComponent} from './pokemon/pokemon.component';
 import {FruitComponent} from './fruit/fruit.component';
 import {Fruit} from './models/fruit';
 import {FruitType} from './models/fruit-type';
-import {Bodycheck, Eisstrahl, Erholung, PokemonAttacke} from './models/pokemon-attacken';
+import {Bodycheck, Eisstrahl, Erholung, PokemonAttacke, Schutzschild} from './models/pokemon-attacken';
 import {PokemonType, PokemonTypeColors} from './models/pokemon-type';
 import {getMultiplikator} from './models/type-multiplikator';
+import {PokemonStatus} from "./models/pokemon-status";
 
 @Component({
     selector: 'app-root',
@@ -120,9 +121,15 @@ export class AppComponent {
             multiplikatorSumme *= multiplikator;
         }
         const attackValue = attacke.value * multiplikatorSumme;
-        defender.removeLp(attackValue);
+        if (defender._status != PokemonStatus.SHIELDED) {
+            defender.removeLp(attackValue);
+        }
         if (attacke.specialEffect) {
             attacke.specialEffect(attacker);
+        }
+        if (defender._status === PokemonStatus.SHIELDED) {
+            console.log(defender.name + " Schild hat den Schaden absorbiert.");
+            defender._status = PokemonStatus.NORMAL;
         }
     }
 
@@ -136,6 +143,10 @@ export class AppComponent {
 
     bodycheck(): void {
         this.angreifen(this.rayquaza, this.dragoran, Bodycheck);
+    }
+
+    schutzschild(): void {
+        this.angreifen(this.dragoran, this.rayquaza, Schutzschild);
     }
 }
 

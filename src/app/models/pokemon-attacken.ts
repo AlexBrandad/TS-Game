@@ -27,6 +27,11 @@ const attackWithSelfDamage = function attackWithSelfDamageEffect(value: number) 
     };
 }
 
+const schutzschildEffekt = function schutzschildFunction(attacker: Pokemon) {
+    console.log(attacker.name + " schützt sich selbst.");
+    attacker._status = PokemonStatus.SHIELDED;
+}
+
 function testFunction(value: number) {
 
 
@@ -50,6 +55,13 @@ export const Bodycheck: PokemonAttacke = {
     typ: PokemonType.NORMAL,
     value: 90,
     specialEffect: attackWithSelfDamage(90)
+}
+
+export const Schutzschild: PokemonAttacke = {
+    name: "Schutzschild",
+    typ: PokemonType.NORMAL,
+    value: 0,
+    specialEffect: schutzschildEffekt,
 }
 //1. Attacken noch: Bodycheck(Rayquaza dmg + selfdmg) + Schutzschild (Dragoran)
 // 1.1 ConsoleLogs die dem Spiel ähneln: "{{Attacker}}" führt {{Attacke}} aus! etc.
