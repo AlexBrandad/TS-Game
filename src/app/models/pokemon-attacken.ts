@@ -10,29 +10,13 @@ export type PokemonAttacke = {
     specialEffect?: (attacker: Pokemon, defender: Pokemon, chanceToInflictStatus?: number) => void;
 };
 
-const chanceToInflictStatusEffectFunktion = function inflictStatusEffect(chanceToInflictStatus: number, typ: PokemonType) {
+const chanceToInflictStatusEffectFunktion = function inflictStatusEffect(chanceToInflictStatus: number, status: PokemonStatus) {
     return (attacker: Pokemon, defender: Pokemon): void => {
-        if (typ === PokemonType.ICE) {
-            if (Math.random() < chanceToInflictStatus) {
-                console.log("random < 0.7: ", Math.random() < chanceToInflictStatus);
-                defender!._status = PokemonStatus.FROZEN;
-            }
-        } else if (typ === PokemonType.ELECTRIC) {
-            if (Math.random() < chanceToInflictStatus) {
-                defender!._status = PokemonStatus.PARALYZED;
-            }
-        } else if (typ === PokemonType.FIRE) {
-            if (Math.random() < chanceToInflictStatus) {
-                defender!._status = PokemonStatus.BURNING;
-            }
-        } else if (typ === PokemonType.POISON) {
-            if (Math.random() < chanceToInflictStatus) {
-                defender!._status = PokemonStatus.POISONED;
-            }
-
+        if (Math.random() < chanceToInflictStatus) {
+            defender!._status = status;
         }
-
     }
+
 
 }
 const erholungEffektFunktion = function erholungEffekt(attacker: Pokemon) {
@@ -63,7 +47,7 @@ export const Eisstrahl: PokemonAttacke = {
     name: 'Eisstrahl',
     typ: PokemonType.ICE,
     value: 70,
-    specialEffect: chanceToInflictStatusEffectFunktion(0.2, PokemonType.ICE)
+    specialEffect: chanceToInflictStatusEffectFunktion(0.2, PokemonStatus.FROZEN)
 };
 
 export const Erholung: PokemonAttacke = {
