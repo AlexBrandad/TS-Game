@@ -13,6 +13,7 @@ export type PokemonAttacke = {
 const chanceToInflictStatusEffectFunktion = function inflictStatusEffect(chanceToInflictStatus: number, status: PokemonStatus) {
     return (attacker: Pokemon, defender: Pokemon): void => {
         if (Math.random() < chanceToInflictStatus) {
+            console.log(defender.name + " ist jetzt " + status);
             defender!._status = status;
         }
     }

@@ -1,10 +1,10 @@
 export enum PokemonStatus {
-    SLEEPING = 'sleeping',
-    FROZEN = 'frozen',
-    BURNING = 'burning',
-    POISONED = 'poisoned',
-    PARALYZED = 'paralyzed',
-    CONFUSED = 'confused',
+    SLEEPING = 'eingeschlafen',
+    FROZEN = 'eingefroren',
+    BURNING = 'verbrannt',
+    POISONED = 'vergiftet',
+    PARALYZED = 'paralysiert',
+    CONFUSED = 'verwirrt',
     NORMAL = 'normal',
     SHIELDED = 'shielded'
 }
