@@ -122,13 +122,13 @@ export class AppComponent {
         }
         const attackValue = attacke.value * multiplikatorSumme;
         console.log(attacker.name + " setzt " + attacke.name + " ein");
-        if (defender._status != PokemonStatus.SHIELDED) {
+        if (defender._status !== PokemonStatus.SHIELDED) {
             console.log(attacke.name + " hat an " + defender.name + " " + attacke.value + " Schaden angerichtet!");
             defender.removeLp(attackValue);
 
         }
         if (attacke.specialEffect) {
-            attacke.specialEffect(attacker);
+            attacke.specialEffect(attacker, defender);
         }
         if (defender._status === PokemonStatus.SHIELDED) {
             console.log(defender.name + " Schild hat den Schaden absorbiert.");

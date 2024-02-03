@@ -7,11 +7,36 @@ export type PokemonAttacke = {
     name: string;
     typ: PokemonType;
     value: number;
-    specialEffect?: (attacker: Pokemon, defender?: Pokemon, chanceToInflictStatus?: number) => void;
+    specialEffect?: (attacker: Pokemon, defender: Pokemon, chanceToInflictStatus?: number) => void;
 };
 const paralyseEffektFunktion = function paralyseEffekt() {
 };
-const chanceToInflictStatusEffectFunktion = function inflictStatusEffect(defender: Pokemon, chanceToInflictStatus: number) {
+const chanceToInflictStatusEffectFunktion = function inflictStatusEffect(chanceToInflictStatus: number, typ: PokemonType) {
+    return (attacker: Pokemon, defender: Pokemon): void => {
+
+        if (attacker) {
+            console.log("pimmel");
+            attacker._status = PokemonStatus.FROZEN;
+        }
+        /*if (typ === PokemonType.ICE) {
+            if (Math.random() < chanceToInflictStatus) {
+                defender!._status = PokemonStatus.FROZEN;
+            }
+        } else if (typ === PokemonType.ELECTRIC) {
+            if (Math.random() < chanceToInflictStatus) {
+                defender!._status = PokemonStatus.PARALYZED;
+            }
+        } else if (typ === PokemonType.FIRE) {
+            if (Math.random() < chanceToInflictStatus) {
+                defender!._status = PokemonStatus.BURNING;
+            }
+        } else if (typ === PokemonType.POISON) {
+            if (Math.random() < chanceToInflictStatus) {
+                defender!._status = PokemonStatus.POISONED;
+            }
+        }*/
+    }
+
 }
 const erholungEffektFunktion = function erholungEffekt(attacker: Pokemon) {
     attacker._currentLp = attacker.maxLp;
@@ -19,10 +44,10 @@ const erholungEffektFunktion = function erholungEffekt(attacker: Pokemon) {
 };
 
 const attackWithSelfDamage = function attackWithSelfDamageEffect(value: number) {
-    return (attacker: Pokemon, defender?: Pokemon) => {
+    return (attacker: Pokemon, defender: Pokemon) => {
         attacker._currentLp -= Math.floor(0.25 * value);
         if (defender) {
-            defender._currentLp -= value;
+            console.log("Bodycheck Defender Case");
         }
     };
 }
@@ -41,6 +66,7 @@ export const Eisstrahl: PokemonAttacke = {
     name: 'Eisstrahl',
     typ: PokemonType.ICE,
     value: 70,
+    specialEffect: chanceToInflictStatusEffectFunktion(0.7, PokemonType.ICE)
 };
 
 export const Erholung: PokemonAttacke = {
