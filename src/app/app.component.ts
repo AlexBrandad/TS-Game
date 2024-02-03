@@ -25,13 +25,15 @@ export class AppComponent {
         384,
         'Rayquaza',
         [PokemonType.DRAGON, PokemonType.FLYING],
-        [PokemonType.ICE, PokemonType.DRAGON]
+        [PokemonType.ICE, PokemonType.DRAGON],
+        {x: 3, y: 0}
     );
     dragoran = new Pokemon(
         148,
         'Dragoran',
         [PokemonType.DRAGON, PokemonType.FLYING],
-        [PokemonType.ICE, PokemonType.DRAGON]
+        [PokemonType.ICE, PokemonType.DRAGON],
+        {x: 0, y: 2}
     );
     healthBerry = new Fruit(FruitType.Health);
 

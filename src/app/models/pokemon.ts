@@ -24,7 +24,8 @@ export class Pokemon {
         id: number,
         name: string,
         _typen: PokemonType[],
-        _schwaeche: PokemonType[]
+        _schwaeche: PokemonType[],
+        xy: { x: number, y: number }
     ) {
         this._id = id;
         this._name = name;
@@ -33,7 +34,7 @@ export class Pokemon {
         this._xp = 10;
         this.attacken = [];
         this._schwaechen = _schwaeche;
-        this.xy = {x: 0, y: 0};
+        this.xy = xy;
         this._currentLp = this._maxLp;
         this._currentLv = 1;
         this._currentXp = 0;
@@ -105,7 +106,7 @@ export class Pokemon {
             this.xp = 0;
         }
     }
-    
+
 
     bewegen(richtung: Richtung) {
         switch (richtung) {
