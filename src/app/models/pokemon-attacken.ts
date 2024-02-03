@@ -9,8 +9,7 @@ export type PokemonAttacke = {
     value: number;
     specialEffect?: (attacker: Pokemon, defender: Pokemon, chanceToInflictStatus?: number) => void;
 };
-const paralyseEffektFunktion = function paralyseEffekt() {
-};
+
 const chanceToInflictStatusEffectFunktion = function inflictStatusEffect(chanceToInflictStatus: number, typ: PokemonType) {
     return (attacker: Pokemon, defender: Pokemon): void => {
 
